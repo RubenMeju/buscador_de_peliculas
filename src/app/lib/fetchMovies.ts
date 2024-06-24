@@ -22,3 +22,25 @@ export async function fetchMovies(): Promise<{ results: Movie[] }> {
 
   return res.json();
 }
+
+//funcion para buscar por titulo
+export async function fetchSearchMovies(
+  query: string
+): Promise<{ results: Movie[] }> {
+  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}search/movie?query=${query}&language=en-US&page=1`;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_API}`,
+    },
+  };
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch search results");
+  }
+
+  return res.json();
+}
