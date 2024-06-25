@@ -10,7 +10,7 @@ interface searchInput {
 const Home: React.FC<{ searchParams: searchInput }> = async ({
   searchParams,
 }) => {
-  console.log(searchParams);
+  // console.log(searchParams);
   const query = searchParams?.search || "";
 
   let data: { results: Movie[] } = { results: [] };
@@ -20,7 +20,7 @@ const Home: React.FC<{ searchParams: searchInput }> = async ({
   } else {
     data = await fetchMovies();
   }
-
+  // console.log(data);
   return (
     <main className="w-11/12 m-auto pt-10 flex flex-col items-center gap-10">
       <SearchInput />

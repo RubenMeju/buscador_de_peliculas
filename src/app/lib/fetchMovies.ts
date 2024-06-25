@@ -5,7 +5,7 @@ export interface Movie {
 }
 
 export async function fetchMovies(): Promise<{ results: Movie[] }> {
-  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/popular?language=en-US&page=1`;
+  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/popular?language=es-ES&page=1`;
   const options = {
     method: "GET",
     headers: {
@@ -27,7 +27,7 @@ export async function fetchMovies(): Promise<{ results: Movie[] }> {
 export async function fetchSearchMovies(
   query: string
 ): Promise<{ results: Movie[] }> {
-  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}search/movie?query=${query}&language=en-US&page=1`;
+  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}search/movie?query=${query}&language=es-ES&page=1`;
   const options = {
     method: "GET",
     headers: {
@@ -40,6 +40,27 @@ export async function fetchSearchMovies(
 
   if (!res.ok) {
     throw new Error("Failed to fetch search results");
+  }
+
+  return res.json();
+}
+
+//filtrar pelicula por id
+
+export async function fetchMovieID(movie_id): Promise<{ results: Movie[] }> {
+  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/${movie_id}?language=es-ES`;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_API}`,
+    },
+  };
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
   }
 
   return res.json();

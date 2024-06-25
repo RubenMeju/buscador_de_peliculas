@@ -1,14 +1,12 @@
+import { fetchMovieID } from "@/app/lib/fetchMovies";
 import Image from "next/image";
-import { Movie } from "../lib/fetchMovies";
-import Link from "next/link";
 
-interface MovieCardProps {
-  movie: Movie;
-}
-
-const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+export default async function Page({ params }: { params: { id: string } }) {
+  const movie = await fetchMovieID(params.id);
+  console.log(movie);
   return (
-    <Link href={`/movies/${movie.id}`}>
+    <div>
+      <h1>id: {params.id}</h1>
       <div className="relative w-[300px] h-[480px] border-4 border-red-900 rounded-md cursor-pointer overflow-hidden">
         {movie.poster_path ? (
           <Image
@@ -28,8 +26,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           {movie.title}
         </h1>
       </div>
-    </Link>
+    </div>
   );
-};
-
-export default MovieCard;
+}
