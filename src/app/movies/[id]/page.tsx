@@ -1,7 +1,7 @@
 import { fetchMovieID } from "@/app/lib/fetchMovies";
 import Image from "next/image";
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: number } }) {
   const movie = await fetchMovieID(params.id);
   console.log(movie);
   return (

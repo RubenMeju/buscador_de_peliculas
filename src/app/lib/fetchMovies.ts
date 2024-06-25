@@ -1,6 +1,7 @@
 export interface Movie {
   id: number;
   title: string;
+  overview: string;
   poster_path: string | null;
 }
 
@@ -47,7 +48,7 @@ export async function fetchSearchMovies(
 
 //filtrar pelicula por id
 
-export async function fetchMovieID(movie_id): Promise<{ results: Movie[] }> {
+export async function fetchMovieID(movie_id: number): Promise<Movie> {
   const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/${movie_id}?language=es-ES`;
   const options = {
     method: "GET",
