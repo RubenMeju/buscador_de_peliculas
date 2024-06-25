@@ -17,7 +17,10 @@ export default function SearchInput() {
   };
 
   return (
-    <form className="max-w-md mx-auto" onSubmit={handleSearch}>
+    <form
+      className="w-[300px] max-w-md mx-auto md:w-4/5"
+      onSubmit={handleSearch}
+    >
       <label
         htmlFor="search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
