@@ -1,9 +1,10 @@
-import { fetchMovieID } from "@/app/lib/fetchMovies";
+import { fetchMovieID, fetchTrailerByMovieID } from "@/app/lib/fetchMovies";
 import Image from "next/image";
 
 export default async function Page({ params }: { params: { id: number } }) {
   const movie = await fetchMovieID(params.id);
-  console.log(movie);
+  const trailer = await fetchTrailerByMovieID(params.id);
+  console.log(trailer);
   return (
     <div className="w-full ">
       <div className="relative w-full h-[280px] max-w-6xl md:h-[500px]">
@@ -57,6 +58,27 @@ export default async function Page({ params }: { params: { id: number } }) {
           ))}
         </div>
       </section>
+
+      <div className="p-4">
+        {trailer ? (
+          <div key={trailer.id} className="mb-4">
+            <p>{trailer.name}</p>
+            {trailer.site === "YouTube" && (
+              <iframe
+                width="100%"
+                height="315"
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+                title={trailer.name}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            )}
+          </div>
+        ) : (
+          <p>No trailers available</p>
+        )}
+      </div>
     </div>
   );
 }
