@@ -18,9 +18,9 @@ export default async function Page({ params }: { params: { id: number } }) {
             className="object-cover"
           />
 
-          <div className="fixed top-0 left-0 w-full h-[100vh] p-8 overflow-scroll bg-black/75">
-            <div className="w-full 2xl:w-3/5 m-auto">
-              <section className="w-full flex flex-col items-center lg:flex-row m-auto">
+          <div className="fixed top-0 left-0 w-full h-[100vh] overflow-scroll bg-black/75">
+            <div className="w-full max-w-5xl lg:w-4/5 m-auto">
+              <section className="w-full  mt-10 flex flex-col items-center gap-6  lg:flex-row m-auto">
                 <div className="relative w-full h-72 md:w-96 md:h-96 lg:h-[500px]">
                   <Image
                     src={
@@ -35,11 +35,9 @@ export default async function Page({ params }: { params: { id: number } }) {
                   />
                 </div>
 
-                <div className="w-[90%] p-10 max-w-xl m-auto flex flex-col gap-6 bg-black/50 rounded-md">
-                  <h1 className="w-full p-4 text-center text-2xl font-bold">
-                    {movie.title}
-                  </h1>
-                  <p>{movie.overview}</p>
+                <div className="w-[90%] max-w-xl m-auto flex flex-col gap-4">
+                  <h1 className="w-full text-2xl font-bold">{movie.title}</h1>
+                  <p className="">{movie.overview}</p>
 
                   <span className="text-center">
                     Release Date: {movie.release_date}
