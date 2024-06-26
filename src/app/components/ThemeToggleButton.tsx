@@ -1,17 +1,17 @@
 "use client";
-import { useTheme } from "../context/themeContext";
+import { useTheme } from "next-themes";
 
-const ThemeToggleButton = () => {
-  const { theme, toggleTheme } = useTheme();
+export default function ThemeToggleButton() {
+  const { theme, setTheme } = useTheme();
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded"
-    >
-      Toggle to {theme === "light" ? "Dark" : "Light"} Mode
-    </button>
+    <div>
+      <button className="dark:text-white" onClick={() => setTheme("light")}>
+        Light Mode
+      </button>
+      <button className="dark:text-white" onClick={() => setTheme("dark")}>
+        Dark Mode
+      </button>
+    </div>
   );
-};
-
-export default ThemeToggleButton;
+}
