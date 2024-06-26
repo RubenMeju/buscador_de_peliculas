@@ -5,7 +5,7 @@ import { FormEvent } from "react";
 
 export default function SearchInput() {
   const searchParams = useSearchParams();
-  const search = searchParams.get("search");
+  //const search = searchParams.get("search");
   const { replace } = useRouter();
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
