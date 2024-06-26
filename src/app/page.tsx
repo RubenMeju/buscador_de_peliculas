@@ -25,7 +25,7 @@ export default async function Page({
   } else {
     data = await fetchMovies(currentPage);
   }
-  console.log("principal page: ", currentPage);
+  const totalPages = data.total_pages;
   return (
     <main className="w-full pt-10 flex flex-col items-center gap-10">
       <SearchInput />
@@ -36,7 +36,7 @@ export default async function Page({
           ))}
         </div>
       </Suspense>
-      <Pagination currentPage={currentPage} />
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </main>
   );
 }

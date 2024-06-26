@@ -2,7 +2,13 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
-export default function Pagination({ currentPage }: { currentPage: number }) {
+export default function Pagination({
+  currentPage,
+  totalPages,
+}: {
+  currentPage: number;
+  totalPages: number;
+}) {
   console.log("pagina actual", currentPage);
   const searchParams = useSearchParams();
   const { replace } = useRouter();
@@ -29,7 +35,7 @@ export default function Pagination({ currentPage }: { currentPage: number }) {
                 ? "text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 : "text-gray-500 bg-gray-900 border-gray-700 cursor-not-allowed"
             }`}
-            onClick={() => handlePageChange(previousPage)}
+            onClick={() => previousPage > 0 && handlePageChange(previousPage)}
           >
             Previous
           </span>
@@ -62,26 +68,36 @@ export default function Pagination({ currentPage }: { currentPage: number }) {
             {currentPage}
           </span>
         </li>
+        {currentPage < totalPages && (
+          <>
+            <li>
+              <span
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                onClick={() => handlePageChange(nextPage)}
+              >
+                {nextPage}
+              </span>
+            </li>
+            <li>
+              <span
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                onClick={() => handlePageChange(secondNextPage)}
+              >
+                {secondNextPage}
+              </span>
+            </li>
+          </>
+        )}
         <li>
           <span
-            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            onClick={() => handlePageChange(nextPage)}
-          >
-            {nextPage}
-          </span>
-        </li>
-        <li>
-          <span
-            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-            onClick={() => handlePageChange(secondNextPage)}
-          >
-            {secondNextPage}
-          </span>
-        </li>
-        <li>
-          <span
-            onClick={() => handlePageChange(nextPage)}
-            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            onClick={() =>
+              currentPage < totalPages && handlePageChange(nextPage)
+            }
+            className={`flex items-center justify-center px-3 h-8 leading-tight border rounded-e-lg ${
+              currentPage < totalPages
+                ? "text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                : "text-gray-500 bg-gray-900 border-gray-700 cursor-not-allowed"
+            }`}
           >
             Next
           </span>
