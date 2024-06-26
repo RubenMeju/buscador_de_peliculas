@@ -23,7 +23,7 @@ const Home: React.FC<{ searchParams: searchInput }> = async ({
   }
   // console.log(data);
   return (
-    <main className="w-11/12 m-auto pt-10 flex flex-col items-center gap-10">
+    <main className="w-full pt-10 flex flex-col items-center gap-10">
       <SearchInput />
       <Suspense key={query} fallback={<p>Loading movies...</p>}>
         <div className="flex flex-col justify-center gap-10 md:flex-row md:flex-wrap">
