@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Movie } from "../lib/fetchMovies";
 import Link from "next/link";
+import { Movie } from "../types";
 
 interface MovieCardProps {
   movie: Movie;

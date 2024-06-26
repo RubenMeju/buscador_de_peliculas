@@ -1,9 +1,4 @@
-export interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string | null;
-}
+import { Movie } from "../types";
 
 export async function fetchMovies(): Promise<{ results: Movie[] }> {
   const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/popular?language=es-ES&page=1`;

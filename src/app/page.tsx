@@ -1,7 +1,8 @@
-import { fetchMovies, fetchSearchMovies, Movie } from "./lib/fetchMovies";
+import { fetchMovies, fetchSearchMovies } from "./lib/fetchMovies";
 import MovieCard from "./components/MovieCard";
 import SearchInput from "./components/SearchInput";
 import { Suspense } from "react";
+import { Movie } from "./types";
 
 interface searchInput {
   search: string;
