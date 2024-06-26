@@ -35,7 +35,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                   />
                 </div>
 
-                <div className="w-[90%] max-w-xl m-auto flex flex-col gap-4">
+                <div className="w-[90%] max-w-xl m-auto flex flex-col gap-4 text-white">
                   <h1 className="w-full text-2xl font-bold">{movie.title}</h1>
                   <p className="">{movie.overview}</p>
 
@@ -59,7 +59,7 @@ export default async function Page({ params }: { params: { id: number } }) {
               <section className="max-w-3xl p-4 pt-10">
                 {trailer ? (
                   <div key={trailer.id} className="mb-4">
-                    <p>{trailer.name}</p>
+                    <p className="text-white">{trailer.name}</p>
                     {trailer.site === "YouTube" && (
                       <iframe
                         width="100%"

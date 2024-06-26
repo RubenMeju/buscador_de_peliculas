@@ -24,7 +24,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             <span>No Image Available</span>
           </div>
         )}
-        <h1 className="absolute bottom-0 left-0 w-full p-4 text-center text-2xl font-bold bg-black/80">
+        <h1 className="absolute bottom-0 left-0 w-full p-4 text-white text-center text-2xl font-bold bg-black/80">
           {movie.title}
         </h1>
       </div>
