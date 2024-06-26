@@ -21,7 +21,7 @@ export default async function Page({
   let data: { results: Movie[] } = { results: [] };
 
   if (query.length > 0) {
-    data = await fetchSearchMovies(query);
+    data = await fetchSearchMovies(query, currentPage);
   } else {
     data = await fetchMovies(currentPage);
   }

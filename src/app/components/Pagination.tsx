@@ -2,18 +2,9 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
-export default function Pagination({
-  searchParams,
-  currentPage,
-}: {
-  searchParams?: {
-    search?: string;
-    query?: string;
-    page?: string;
-  };
-  currentPage: number;
-}) {
+export default function Pagination({ currentPage }: { currentPage: number }) {
   console.log("pagina actual", currentPage);
+  const searchParams = useSearchParams();
   const { replace } = useRouter();
   const previousPage = currentPage - 1;
   const secondPreviousPage = currentPage - 2;
@@ -23,7 +14,9 @@ export default function Pagination({
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
-    replace(`?page=${params.get("page")?.toString()}`);
+    replace(
+      `?search=${params.get("search")}&page=${params.get("page")?.toString()}`
+    );
   };
 
   return (

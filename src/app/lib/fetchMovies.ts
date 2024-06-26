@@ -21,9 +21,10 @@ export async function fetchMovies(page = 1): Promise<{ results: Movie[] }> {
 
 //funcion para buscar por titulo
 export async function fetchSearchMovies(
-  query: string
+  query: string,
+  currentPage: Number
 ): Promise<{ results: Movie[] }> {
-  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}search/movie?query=${query}&language=es-ES&page=1`;
+  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}search/movie?query=${query}&language=es-ES&page=${currentPage}`;
   const options = {
     method: "GET",
     headers: {
