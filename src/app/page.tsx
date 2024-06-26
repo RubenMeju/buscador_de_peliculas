@@ -26,7 +26,7 @@ const Home: React.FC<{ searchParams: searchInput }> = async ({
     <main className="w-full pt-10 flex flex-col items-center gap-10">
       <SearchInput />
       <Suspense key={query} fallback={<p>Loading movies...</p>}>
-        <div className="flex flex-col justify-center gap-10 md:flex-row md:flex-wrap">
+        <div className="flex flex-col justify-center gap-10 md:flex-row md:flex-wrap lg:gap-20">
           {data.results.map((movie: Movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
