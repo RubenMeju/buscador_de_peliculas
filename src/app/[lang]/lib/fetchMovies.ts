@@ -1,7 +1,10 @@
-import { Movie, Trailer, Trailers } from "../types";
+import { Movie, Trailer } from "../types";
 
-export async function fetchMovies(page = 1): Promise<{ results: Movie[] }> {
-  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/popular?language=es-ES&page=${page}`;
+export async function fetchMovies(
+  language,
+  page = 1
+): Promise<{ results: Movie[] }> {
+  const url = `${process.env.NEXT_PUBLIC_URL_TMDB}movie/popular?language=${language}&page=${page}`;
   const options = {
     method: "GET",
     headers: {

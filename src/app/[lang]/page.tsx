@@ -6,9 +6,11 @@ import { Movie } from "./types";
 import Pagination from "./components/Pagination";
 import ThemeToggleButton from "./components/ThemeToggleButton";
 import Loading from "./Loading";
+import { getDictionary } from "./dictionaries";
 
 export default async function Page({
   searchParams,
+  params,
 }: {
   searchParams?: {
     search?: string;
@@ -16,7 +18,9 @@ export default async function Page({
     page?: Number;
   };
 }) {
-  // console.log(searchParams);
+  const dict = await getDictionary("es"); // en
+
+  const language = params.lang;
   const query = searchParams?.search || "";
   const currentPage = Number(searchParams?.page) || 1;
 
@@ -25,12 +29,13 @@ export default async function Page({
   if (query.length > 0) {
     data = await fetchSearchMovies(query, currentPage);
   } else {
-    data = await fetchMovies(currentPage);
+    data = await fetchMovies(language, currentPage);
   }
   const totalPages = data.total_pages;
   return (
     <main className="w-full pt-10 flex flex-col items-center gap-10">
       <div>
+        <h1 className="dark:text-white">{dict.card.title}</h1>
         <ThemeToggleButton />
       </div>
       <SearchInput />
