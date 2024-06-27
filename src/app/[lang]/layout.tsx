@@ -14,11 +14,16 @@ export const metadata: Metadata = {
   description: "Videoclub online",
 };
 
+export interface Params {
+  lang: string;
+}
+
 export default function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Params;
 }>) {
   return (
     <html lang={params.lang} suppressHydrationWarning>

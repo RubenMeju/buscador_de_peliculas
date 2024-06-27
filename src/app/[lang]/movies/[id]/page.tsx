@@ -1,10 +1,9 @@
-import { fetchMovieID, fetchTrailerByMovieID } from "@/app/lib/fetchMovies";
 import Image from "next/image";
+import { fetchMovieID, fetchTrailerByMovieID } from "../../lib/fetchMovies";
 
 export default async function Page({ params }: { params: { id: number } }) {
   const movie = await fetchMovieID(params.id);
   const trailer = await fetchTrailerByMovieID(params.id);
-  console.log(params.id);
   return (
     <div className="w-full ">
       {movie.backdrop_path && movie.poster_path ? (

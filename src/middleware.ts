@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 let locales = ["en-US", "es-ES"];
 
 // Función para obtener el idioma preferido del usuario
-function getLocale(request) {
+function getLocale(request: NextRequest) {
   // Obtener el header Accept-Language de la solicitud
   const acceptLanguage = request.headers.get("Accept-Language");
   console.log("q idioma es: ", acceptLanguage);
@@ -21,7 +21,7 @@ function getLocale(request) {
   return "en-US"; // o el idioma por defecto que prefieras
 }
 
-export function middleware(request) {
+export function middleware(request: NextRequest) {
   // Verificar si hay algún idioma admitido en el pathname
   const { pathname } = request.nextUrl;
   const pathnameHasLocale = locales.some(
