@@ -1,8 +1,9 @@
 "use client";
 
+import { defaultLocale } from "@/config";
 import { setUserLocale } from "../lib/locale";
 
-export default function SelectLanguage({ currentLocale }) {
+export default function SelectLanguage() {
   const handleChange = (event) => {
     const locale = event.target.value;
     setUserLocale(locale);
@@ -15,8 +16,8 @@ export default function SelectLanguage({ currentLocale }) {
         name="language"
         id="language"
         onChange={handleChange}
-        defaultValue={JSON.stringify(currentLocale)}
-        className="text-black"
+        defaultValue={defaultLocale}
+        className="text-black dark:text-white"
       >
         <option value="es">Español</option>
         <option value="en">English</option>

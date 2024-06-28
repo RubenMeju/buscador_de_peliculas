@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
-import "./globals.css";
 import { getLocale, getMessages } from "next-intl/server";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,10 +14,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
-  const locale = await getLocale();
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
