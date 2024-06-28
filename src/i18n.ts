@@ -3,11 +3,15 @@ import { getRequestConfig } from "next-intl/server";
 import { locales } from "./config";
 
 export default getRequestConfig(async ({ locale }) => {
-  // Validate that the incoming `locale` parameter is valid
+  // Validar que el parámetro `locale` entrante es válido
   if (!locales.includes(locale as any)) notFound();
 
+  // Importar los mensajes basados en el `locale`
+  const messages = (await import(`./app/[locale]/messages/${locale}.json`))
+    .default;
+
   return {
-    locale,
-    messages: (await import(`./app/[lang]/messages/${locale}.json`)).default,
+    // No es necesario devolver el `locale`
+    messages,
   };
 });
