@@ -1,8 +1,8 @@
+import { getLocale } from "next-intl/server";
 import { Movie, Trailer } from "../types";
-import { getUserLocale } from "./locale";
 
 async function getIdioma(): Promise<string> {
-  const res = await getUserLocale();
+  const res = await getLocale();
   if (res === "en") {
     return "en-US";
   } else if (res === "es") {
