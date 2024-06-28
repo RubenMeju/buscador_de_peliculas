@@ -1,5 +1,5 @@
 import { getLocale } from "next-intl/server";
-import { Movie, Trailer } from "../types";
+import { Movie, MovieData, Trailer } from "../types";
 
 async function getIdioma(): Promise<string> {
   const res = await getLocale();
@@ -21,7 +21,7 @@ function getFetchOptions() {
   };
 }
 
-async function fetchFromAPI(endpoint: string) {
+async function fetchFromAPI(endpoint: string): Promise<any> {
   const url = `${process.env.NEXT_PUBLIC_URL_TMDB}${endpoint}`;
   const options = getFetchOptions();
   const res = await fetch(url, options);
@@ -33,7 +33,7 @@ async function fetchFromAPI(endpoint: string) {
   return res.json();
 }
 
-export async function fetchMovies(page = 1): Promise<{ results: Movie[] }> {
+export async function fetchMovies(page = 1): Promise<MovieData> {
   const idioma = await getIdioma();
   const endpoint = `movie/popular?language=${idioma}&page=${page}`;
   return fetchFromAPI(endpoint);
@@ -41,10 +41,10 @@ export async function fetchMovies(page = 1): Promise<{ results: Movie[] }> {
 
 export async function fetchSearchMovies(
   query: string,
-  currentPage: number
-): Promise<{ results: Movie[] }> {
+  page: number
+): Promise<MovieData> {
   const idioma = await getIdioma();
-  const endpoint = `search/movie?query=${query}&language=${idioma}&page=${currentPage}`;
+  const endpoint = `search/movie?query=${query}&language=${idioma}&page=${page}`;
   return fetchFromAPI(endpoint);
 }
 
