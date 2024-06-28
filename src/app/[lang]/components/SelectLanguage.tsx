@@ -8,7 +8,6 @@ export default function SelectLanguage({ currentLocale }) {
     setUserLocale(locale);
   };
 
-  console.log("current locale: " + JSON.stringify(currentLocale));
   return (
     <form className="text-white">
       <label htmlFor="language">Elija el idioma:</label>

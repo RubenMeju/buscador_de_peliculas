@@ -9,7 +9,6 @@ export default function Pagination({
   currentPage: number;
   totalPages: number;
 }) {
-  console.log("pagina actual", currentPage);
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const previousPage = currentPage - 1;

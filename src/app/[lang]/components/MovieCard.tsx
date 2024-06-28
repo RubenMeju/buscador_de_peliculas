@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Movie } from "../types";
+import { getUserLocale } from "../lib/locale";
 
 interface MovieCardProps {
   movie: Movie;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+const MovieCard: React.FC<MovieCardProps> = async ({ movie }) => {
+  const language = await getUserLocale();
+  console.log("el idioma es :", language);
   return (
-    <Link href={`/movies/${movie.id}`}>
+    <Link href={`/${language}/movies/${movie.id}`}>
       <div className="relative w-[300px] h-[480px] border-4 border-red-900 rounded-md cursor-pointer overflow-hidden">
         {movie.poster_path ? (
           <Image
