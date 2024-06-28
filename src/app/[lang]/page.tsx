@@ -6,8 +6,7 @@ import { Movie } from "./types";
 import Pagination from "./components/Pagination";
 import ThemeToggleButton from "./components/ThemeToggleButton";
 import Loading from "./Loading";
-import SelectLanguage from "./components/SelectLanguage";
-import { getLocale } from "next-intl/server";
+import LocaleSwitcher from "./components/locale/LocaleSwitcher";
 
 export default async function Page({
   searchParams,
@@ -31,13 +30,12 @@ export default async function Page({
   const totalPages = data.total_pages;
   return (
     <main className="w-full pt-10 flex flex-col items-center gap-10">
-      <SelectLanguage currentLocale={await getLocale()} />
-      <div>
-        <h1 className="dark:text-white">title</h1>
-
+      <div className=" flex gap-6">
+        <LocaleSwitcher />
         <ThemeToggleButton />
       </div>
       <SearchInput />
+
       <Suspense key={query + currentPage} fallback={<Loading />}>
         <div className="flex flex-col justify-center gap-10 md:flex-row md:flex-wrap lg:gap-20">
           {data.results.map((movie: Movie) => (

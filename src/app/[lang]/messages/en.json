@@ -1,5 +1,9 @@
 {
   "SearchInput": {
     "button": "Search!"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, es {es Spanish} en {🇺🇸 English} other {Unknown}}"
   }
 }
