@@ -2,8 +2,11 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent } from "react";
+import { useTranslations } from "next-intl";
 
 export default function SearchInput() {
+  const t = useTranslations("SearchInput");
+
   const searchParams = useSearchParams();
   //const search = searchParams.get("search");
   const { replace } = useRouter();
@@ -57,7 +60,7 @@ export default function SearchInput() {
           type="submit"
           className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Search
+          {t("button")}
         </button>
       </div>
     </form>
