@@ -7,6 +7,7 @@ import Pagination from "./components/Pagination";
 import ThemeToggleButton from "./components/ThemeToggleButton";
 import Loading from "./Loading";
 import LocaleSwitcher from "./components/locale/LocaleSwitcher";
+import Header from "./components/Header";
 
 export default async function Page({
   searchParams,
@@ -17,13 +18,12 @@ export default async function Page({
   const currentPage = Number(searchParams?.page) || 1;
 
   const data: MovieData = await fetchData(query, currentPage);
-  console.log("que devuelve data: ", data);
+  // console.log("que devuelve data: ", data);
   const totalPages = data.total_pages;
 
   return (
-    <main className="w-full pt-10 flex flex-col items-center gap-10">
+    <main className="w-full flex flex-col items-center gap-10">
       <Header />
-      <SearchInput />
       <MovieList query={query} currentPage={currentPage} data={data.results} />
       <Pagination currentPage={currentPage} totalPages={totalPages} />
     </main>
@@ -36,15 +36,6 @@ async function fetchData(query: string, page: number): Promise<MovieData> {
   } else {
     return await fetchMovies(page);
   }
-}
-
-function Header() {
-  return (
-    <div className="flex gap-6">
-      <LocaleSwitcher />
-      <ThemeToggleButton />
-    </div>
-  );
 }
 
 function MovieList({
