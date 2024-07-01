@@ -18,20 +18,12 @@ export default function SearchInput({ setIsOpen }) {
     const params = new URLSearchParams(searchParams);
     params.set("search", query);
     replace(`?search=${params.get("search")?.toString()}`);
+    setIsOpen(false);
   };
 
   return (
-    <div className="absolute top-0 w-4/5 z-10">
-      <div className="flex justify-center bg-green-400 ">
-        <button
-          className="w-10 h-10 rounded-full bg-gray-800 dark:text-white "
-          onClick={() => setIsOpen(false)}
-        >
-          X
-        </button>
-      </div>
-
-      <form className="w-full" onSubmit={handleSearch}>
+    <div className="absolute top-20 w-full h-[100vh] z-10 bg-black/70">
+      <form className="w-4/5 m-auto mt-10" onSubmit={handleSearch}>
         <label
           htmlFor="search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
