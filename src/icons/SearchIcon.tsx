@@ -1,4 +1,4 @@
-export const SearchIcon = () => {
+export default function SearchIcon() {
   return (
     <svg
       className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -16,4 +16,4 @@ export const SearchIcon = () => {
       />
     </svg>
   );
-};
+}

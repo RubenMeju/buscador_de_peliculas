@@ -1,6 +1,6 @@
 import { fetchMovies, fetchSearchMovies } from "./lib/fetchMovies";
 import MovieCard from "./components/MovieCard";
-import SearchInput from "./components/SearchInput";
+import SearchInput from "./components/search/SearchInput";
 import { Suspense } from "react";
 import { Movie, MovieData } from "./types";
 import Pagination from "./components/Pagination";
@@ -22,7 +22,7 @@ export default async function Page({
   const totalPages = data.total_pages;
 
   return (
-    <main className="w-full flex flex-col items-center gap-10">
+    <main className="bg-violet-900">
       <Header />
       <MovieList query={query} currentPage={currentPage} data={data.results} />
       <Pagination currentPage={currentPage} totalPages={totalPages} />
@@ -49,7 +49,7 @@ function MovieList({
 }) {
   return (
     <Suspense key={query + currentPage} fallback={<Loading />}>
-      <div className="flex flex-col justify-center gap-10 md:flex-row md:flex-wrap lg:gap-20">
+      <div className="mt-24 flex flex-col justify-center gap-10 md:flex-row md:flex-wrap lg:gap-20 bg-red-600">
         {data.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
