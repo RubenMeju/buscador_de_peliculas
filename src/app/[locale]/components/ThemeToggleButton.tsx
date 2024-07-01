@@ -25,10 +25,10 @@ export default function ThemeToggleButton() {
             onChange={handleCheckboxChange}
             className="sr-only"
           />
-          <div className="block h-8 w-14 rounded-full bg-[#E5E7EB]"></div>
+          <div className="block h-6 w-12 rounded-full bg-[#E5E7EB]"></div>
           <div
-            className={`dot absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition-transform ${
-              isChecked ? "translate-x-6" : ""
+            className={`dot absolute left-1 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-white transition-transform ${
+              isChecked ? "translate-x-4" : ""
             }`}
           >
             {isChecked ? (
