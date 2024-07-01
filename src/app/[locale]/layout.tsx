@@ -25,7 +25,7 @@ export default async function RootLayout({
       <body className={`${inter.className} bg-slate-300 dark:bg-black`}>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="w-4/5 m-auto">{children}</div>
+            <div className="w-4/5 m-auto lg:w-2/4">{children}</div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

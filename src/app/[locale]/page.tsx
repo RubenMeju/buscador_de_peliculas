@@ -49,7 +49,7 @@ function MovieList({
 }) {
   return (
     <Suspense key={query + currentPage} fallback={<Loading />}>
-      <div className="mt-10 flex flex-col justify-center gap-10 md:flex-row md:flex-wrap lg:gap-20 bg-red-600">
+      <div className="mt-10 grid gap-4 bg-gray-800 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
         {data.map((movie: Movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
