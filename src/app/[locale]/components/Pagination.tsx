@@ -25,7 +25,10 @@ export default function Pagination({
   };
 
   return (
-    <nav aria-label="Page navigation example" className="cursor-pointer">
+    <nav
+      aria-label="pagination"
+      className="p-8 flex justify-center cursor-pointer"
+    >
       <ul className="inline-flex -space-x-px text-sm">
         <li>
           <span
