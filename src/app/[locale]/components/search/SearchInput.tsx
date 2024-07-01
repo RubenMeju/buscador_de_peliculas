@@ -5,7 +5,7 @@ import { FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import SearchIcon from "@/icons/SearchIcon";
 
-export default function SearchInput({ setIsOpen }) {
+export default function SearchInput() {
   const t = useTranslations("SearchInput");
 
   const searchParams = useSearchParams();
@@ -18,38 +18,35 @@ export default function SearchInput({ setIsOpen }) {
     const params = new URLSearchParams(searchParams);
     params.set("search", query);
     replace(`?search=${params.get("search")?.toString()}`);
-    setIsOpen(false);
   };
 
   return (
-    <div className="absolute top-20 w-full h-[100vh] z-10 bg-black/70">
-      <form className="w-4/5 m-auto mt-10" onSubmit={handleSearch}>
-        <label
-          htmlFor="search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Search
-        </label>
-        <div className="relative">
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <SearchIcon />
-          </div>
-          <input
-            type="search"
-            id="search"
-            name="search"
-            className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos..."
-            //  required
-          />
-          <button
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            {t("button")}
-          </button>
+    <form className="" onSubmit={handleSearch}>
+      <label
+        htmlFor="search"
+        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+      >
+        Search
+      </label>
+      <div className="relative">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <SearchIcon />
         </div>
-      </form>
-    </div>
+        <input
+          type="search"
+          id="search"
+          name="search"
+          className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Search Mockups, Logos..."
+          //  required
+        />
+        <button
+          type="submit"
+          className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          {t("button")}
+        </button>
+      </div>
+    </form>
   );
 }
