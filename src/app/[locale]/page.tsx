@@ -34,7 +34,9 @@ async function fetchData(query: string, page: number): Promise<MovieData> {
   if (query.length > 0) {
     return await fetchSearchMovies(query, page);
   } else {
-    return await fetchMovies(page);
+    const data = await fetchMovies(page);
+    //console.log("data: ", data);
+    return data;
   }
 }
 

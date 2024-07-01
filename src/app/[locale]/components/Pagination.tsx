@@ -18,10 +18,16 @@ export default function Pagination({
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
+    console.log("searchParams", params.get("search"));
     params.set("page", page.toString());
-    replace(
-      `?search=${params.get("search")}&page=${params.get("page")?.toString()}`
-    );
+
+    if (params.get("search") === null) {
+      replace(`?page=${params.get("page")?.toString()}`);
+    } else {
+      replace(
+        `?search=${params.get("search")}&page=${params.get("page")?.toString()}`
+      );
+    }
   };
 
   return (
