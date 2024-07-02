@@ -28,7 +28,9 @@ export default function Header() {
       }`}
     >
       <div className="w-4/5 m-auto flex justify-between items-center lg:w-2/4">
-        <span className="dark:text-white">Movies APP</span>
+        <span className="text-xl font-semibold dark:text-white">
+          Movies APP
+        </span>
         <div className="flex gap-2">
           <LocaleSwitcher />
           <ThemeToggleButton />
