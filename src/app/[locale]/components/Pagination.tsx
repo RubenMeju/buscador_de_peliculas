@@ -1,4 +1,5 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
@@ -9,6 +10,7 @@ export default function Pagination({
   currentPage: number;
   totalPages: number;
 }) {
+  const t = useTranslations("Pagination");
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const previousPage = currentPage - 1;
@@ -45,7 +47,7 @@ export default function Pagination({
             }`}
             onClick={() => previousPage > 0 && handlePageChange(previousPage)}
           >
-            Previous
+            {t("previous")}
           </span>
         </li>
         {secondPreviousPage > 0 && (
@@ -107,7 +109,7 @@ export default function Pagination({
                 : "text-gray-500 bg-gray-900 border-gray-700 cursor-not-allowed"
             }`}
           >
-            Next
+            {t("next")}
           </span>
         </li>
       </ul>

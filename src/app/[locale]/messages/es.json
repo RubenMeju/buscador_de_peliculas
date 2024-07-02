@@ -1,9 +1,14 @@
 {
   "SearchInput": {
+    "placeholder": "Buscar péliculas",
     "button": "Buscar"
   },
   "LocaleSwitcher": {
     "label": "Cambiar idioma",
     "locale": "{locale, select, es {es Spanish} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Pagination": {
+    "previous": "Previo",
+    "next": "Siguiente"
   }
 }
