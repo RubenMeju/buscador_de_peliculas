@@ -24,7 +24,7 @@ export default async function Page({
       <Header />
       <SearchInput />
 
-      <Filters />
+      <Filters filter={filter} />
 
       <MovieList query={query} currentPage={currentPage} data={data.results} />
       <Pagination currentPage={currentPage} totalPages={totalPages} />
