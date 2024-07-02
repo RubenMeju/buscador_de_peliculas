@@ -43,7 +43,7 @@ export default function Pagination({
             className={`flex items-center justify-center px-3 h-8 ms-0 leading-tight border border-e-0 rounded-s-lg ${
               previousPage > 0
                 ? "text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                : "text-gray-500 bg-gray-900 border-gray-700 cursor-not-allowed"
+                : "text-gray-500 bg-gray-300 border-gray-300 cursor-not-allowed dark:bg-gray-700 dark:border-gray-700 dark:text-gray-500"
             }`}
             onClick={() => previousPage > 0 && handlePageChange(previousPage)}
           >
@@ -106,7 +106,7 @@ export default function Pagination({
             className={`flex items-center justify-center px-3 h-8 leading-tight border rounded-e-lg ${
               currentPage < totalPages
                 ? "text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                : "text-gray-500 bg-gray-900 border-gray-700 cursor-not-allowed"
+                : "text-gray-500 bg-gray-300 border-gray-300 cursor-not-allowed dark:bg-gray-700 dark:border-gray-700 dark:text-gray-500"
             }`}
           >
             {t("next")}
