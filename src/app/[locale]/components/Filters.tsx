@@ -3,36 +3,21 @@ import Link from "next/link";
 
 export default function Filters({ filter }: { filter: string }) {
   const t = useTranslations("Filters");
-
+  const filters = ["popular", "top_rated", "upcoming"];
   return (
     <ul className="mt-10 flex gap-4 text-neutral-300">
-      <li
-        className={`${
-          filter === "popular"
-            ? "text-blue-400"
-            : "cursor-pointer hover:text-blue-300"
-        }`}
-      >
-        <Link href="?filter=popular">Popular</Link>
-      </li>
-      <li
-        className={`${
-          filter === "top_rated"
-            ? "text-blue-400"
-            : "cursor-pointer hover:text-blue-300"
-        }`}
-      >
-        <Link href="?filter=top_rated"> {t("topRated")}</Link>
-      </li>
-      <li
-        className={`${
-          filter === "upcoming"
-            ? "text-blue-400"
-            : "cursor-pointer hover:text-blue-300"
-        }`}
-      >
-        <Link href="?filter=upcoming"> {t("upcoming")}</Link>
-      </li>
+      {filters.map((item, index) => (
+        <li
+          key={index}
+          className={`${
+            filter === item
+              ? "text-blue-400"
+              : "cursor-pointer hover:text-blue-300"
+          }`}
+        >
+          <Link href={`?filter=${item}`}>{t(item)}</Link>
+        </li>
+      ))}
     </ul>
   );
 }

@@ -8,7 +8,8 @@
     "button": "Search!"
   },
   "Filters": {
-    "topRated": "Top rated",
+    "popular": "Popular",
+    "top_rated": "Top rated",
     "upcoming": "Upcoming"
   },
   "Pagination": {
