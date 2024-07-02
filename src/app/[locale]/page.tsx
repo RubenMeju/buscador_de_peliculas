@@ -1,11 +1,9 @@
 import { fetchMovies, fetchSearchMovies } from "./lib/fetchMovies";
-import MovieCard from "./components/MovieCard";
 import SearchInput from "./components/search/SearchInput";
-import { Suspense } from "react";
-import { Movie, MovieData } from "./types";
+import { MovieData } from "./types";
 import Pagination from "./components/Pagination";
-import Loading from "./Loading";
 import Header from "./components/Header";
+import MovieList from "./components/MovieList";
 
 export default async function Page({
   searchParams,
@@ -38,24 +36,4 @@ async function fetchData(query: string, page: number): Promise<MovieData> {
     //console.log("data: ", data);
     return data;
   }
-}
-
-function MovieList({
-  query,
-  currentPage,
-  data,
-}: {
-  query: string;
-  currentPage: number;
-  data: Movie[];
-}) {
-  return (
-    <Suspense key={query + currentPage} fallback={<Loading />}>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
-        {data.map((movie: Movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-    </Suspense>
-  );
 }
