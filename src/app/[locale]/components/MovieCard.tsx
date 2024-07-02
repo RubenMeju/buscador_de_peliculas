@@ -11,7 +11,7 @@ const MovieCard: React.FC<MovieCardProps> = async ({ movie }) => {
   const language = await getLocale();
   return (
     <Link href={`/${language}/movies/${movie.id}`}>
-      <div className="relative w-full pb-[150%] border-4 border-red-900 rounded-md cursor-pointer overflow-hidden">
+      <div className="group relative w-full pb-[150%] border-4 border-red-900 rounded-md cursor-pointer overflow-hidden">
         {movie.poster_path ? (
           <Image
             src={`${process.env.NEXT_PUBLIC_URL_IMAGES_TMDB}${movie.poster_path}`}
@@ -19,7 +19,7 @@ const MovieCard: React.FC<MovieCardProps> = async ({ movie }) => {
             fill={true}
             placeholder="blur"
             blurDataURL={`${process.env.NEXT_PUBLIC_URL_IMAGES_TMDB}${movie.poster_path}`}
-            className="object-cover"
+            className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
