@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { fetchMovieID, fetchTrailerByMovieID } from "../../lib/fetchMovies";
+import { getTranslations } from "next-intl/server";
 
 export default async function Page({ params }: { params: { id: number } }) {
   const movie = await fetchMovieID(params.id);
   const trailer = await fetchTrailerByMovieID(params.id);
+  const t = await getTranslations("DetailsMovie");
+
   return (
     <div className="w-full ">
       {movie.backdrop_path && movie.poster_path ? (
@@ -39,7 +42,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                   <p className="">{movie.overview}</p>
 
                   <span className="text-center">
-                    Release Date: {movie.release_date}
+                    {t("releaseDate")} {movie.release_date}
                   </span>
 
                   <div className="w-full flex flex-wrap justify-center gap-4">
@@ -72,7 +75,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                     )}
                   </div>
                 ) : (
-                  <p>No trailers available</p>
+                  <p className="text-white">No trailers available</p>
                 )}
               </section>
             </div>

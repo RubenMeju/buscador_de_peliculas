@@ -10,5 +10,9 @@
   "Pagination": {
     "previous": "Previo",
     "next": "Siguiente"
+  },
+  "DetailsMovie": {
+    "releaseDate": "Fecha de lanzamiento:",
+    "trailer": "No hay trailers disponibles"
   }
 }
