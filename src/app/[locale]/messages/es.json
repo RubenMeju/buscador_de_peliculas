@@ -1,11 +1,15 @@
 {
+  "LocaleSwitcher": {
+    "label": "Cambiar idioma",
+    "locale": "{locale, select, es {es Spanish} en {🇺🇸 English} other {Unknown}}"
+  },
   "SearchInput": {
     "placeholder": "Buscar péliculas",
     "button": "Buscar"
   },
-  "LocaleSwitcher": {
-    "label": "Cambiar idioma",
-    "locale": "{locale, select, es {es Spanish} en {🇺🇸 English} other {Unknown}}"
+  "Filters": {
+    "topRated": "Más votado",
+    "upcoming": "Próximamente"
   },
   "Pagination": {
     "previous": "Previo",

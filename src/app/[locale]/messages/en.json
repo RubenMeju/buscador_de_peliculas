@@ -1,11 +1,15 @@
 {
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, es {es Spanish} en {🇺🇸 English} other {Unknown}}"
+  },
   "SearchInput": {
     "placeholder": "Search movies",
     "button": "Search!"
   },
-  "LocaleSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, es {es Spanish} en {🇺🇸 English} other {Unknown}}"
+  "Filters": {
+    "topRated": "Top rated",
+    "upcoming": "Upcoming"
   },
   "Pagination": {
     "previous": "Previous",
