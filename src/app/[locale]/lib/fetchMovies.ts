@@ -33,9 +33,13 @@ async function fetchFromAPI(endpoint: string): Promise<any> {
   return res.json();
 }
 
-export async function fetchMovies(page = 1): Promise<MovieData> {
+export async function fetchMovies(
+  filter = "popular",
+  page = 1
+): Promise<MovieData> {
   const idioma = await getIdioma();
-  const endpoint = `movie/popular?language=${idioma}&page=${page}`;
+  console.log("q filtro llega a la fetch", filter);
+  const endpoint = `movie/${filter}?language=${idioma}&page=${page}`;
   return fetchFromAPI(endpoint);
 }
 
