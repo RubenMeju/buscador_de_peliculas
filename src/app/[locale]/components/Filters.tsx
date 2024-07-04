@@ -5,14 +5,14 @@ export default function Filters({ filter }: { filter: string }) {
   const t = useTranslations("Filters");
   const filters = ["popular", "top_rated", "upcoming"];
   return (
-    <ul className="mt-10 flex gap-4 text-neutral-300">
+    <ul className="mt-10 flex gap-4 dark:text-neutral-300">
       {filters.map((item, index) => (
         <li
           key={index}
           className={`${
             filter === item
-              ? "text-blue-400"
-              : "cursor-pointer hover:text-blue-300"
+              ? "text-blue-700 dark:text-blue-400"
+              : "cursor-pointer hover:text-blue-500 dark:hover:text-blue-300"
           }`}
         >
           <Link href={`?filter=${item}`}>{t(item)}</Link>
