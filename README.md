@@ -8,6 +8,8 @@
 
 ![Responsive](./img_mobile.png)
 
+![Desktop](./img_desktop.png)
+
 ## Características
 
 - Buscar películas por nombre.
